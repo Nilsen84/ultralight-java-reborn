@@ -64,7 +64,7 @@ jobs:
       - name: Upload prebuilt libraries
         uses: actions/upload-artifact@v6
         with:
-          name: ultralight-java-reborn-platform-jni-prebuilts
+          name: ultralight-java-reborn-platform-jni-prebuilts-${{ matrix.os }}-${{ matrix.arch }}
           path: ${{ runner.temp }}/prebuilt-natives
           if-no-files-found: error
           retention-days: 1
@@ -85,8 +85,9 @@ jobs:
       - name: Download prebuilt libraries
         uses: actions/download-artifact@v7
         with:
-          name: ultralight-java-reborn-platform-jni-prebuilts
+          name: ultralight-java-reborn-platform-jni-prebuilts-*
           path: ${{ runner.temp }}/prebuilt-natives
+          merge-multiple: true
 
       - name: Set environment variables for publish
         run: |
