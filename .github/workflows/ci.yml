@@ -85,7 +85,7 @@ jobs:
       - name: Download prebuilt libraries
         uses: actions/download-artifact@v7
         with:
-          name: ultralight-java-reborn-platform-jni-prebuilts-*
+          pattern: ultralight-java-reborn-platform-jni-prebuilts-*
           path: ${{ runner.temp }}/prebuilt-natives
           merge-multiple: true
 
